@@ -1,8 +1,26 @@
 #! /usr/bin/env python3
 import argparse
+from controllers.data_base import DataBaseController
 
 
 def main():
+    """
+    Entry point for Polymath Ventures Engineering Challenge
+    :return: None
+    """
+    args = get_args()
+
+    if args.rebuild:
+        DataBaseController().rebuild()
+    elif args.render is not None:
+        print('--------> Building {}.html file...'.format(args.render))
+
+
+def get_args():
+    """
+    Parses and return args
+    :return: Parsed args
+    """
     arg_parser = argparse.ArgumentParser(description='<-------- Polymath Ventures Engineering Challenge -------->')
     arg_group = arg_parser.add_mutually_exclusive_group(required=True)
     arg_group.add_argument(
@@ -16,12 +34,7 @@ def main():
         help='Generates an HTML file with the category tree based on the supplied <cat_id>.',
         metavar='<cat_id>'
     )
-    args = arg_parser.parse_args()
-
-    if args.rebuild:
-        print('--------> Building Data Base...')
-    elif args.render is not None:
-        print('--------> Building {}.html file...'.format(args.render))
+    return arg_parser.parse_args()
 
 
 if __name__ == '__main__':
