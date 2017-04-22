@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 import argparse
 from controllers.data_base import DataBaseController
+from controllers.render import RenderController
 
 
 def main():
@@ -13,7 +14,7 @@ def main():
     if args.rebuild:
         DataBaseController().rebuild()
     elif args.render is not None:
-        print('--------> Building {}.html file...'.format(args.render))
+        RenderController.render(args.render)
 
 
 def get_args():

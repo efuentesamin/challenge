@@ -10,3 +10,7 @@ class Category:
         self.best_offer = best_offer
         self.expired = expired
         self.leaf = leaf
+        self.children = []
+
+    def __str__(self):
+        return '{} {}'.format('-***' * self.level, self.name)
