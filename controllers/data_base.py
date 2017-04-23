@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 from clients.ebay import EBayClient
-from models import Category
+from models.categories import Category
 
 
 class DataBaseController:
@@ -91,6 +91,10 @@ class DataBaseController:
         return category
 
     def _get_children(self, category):
+
+        if category.leaf:
+            return
+
         cursor = self._connection.cursor()
         # Query db
         cursor.execute("""SELECT * FROM categories WHERE parent = ? AND id != ?""", (category.id, category.id))

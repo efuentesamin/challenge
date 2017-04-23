@@ -2,7 +2,7 @@ from xml.etree import ElementTree
 
 import requests
 
-from models import Category
+from models.categories import Category
 
 
 class EBayClient:

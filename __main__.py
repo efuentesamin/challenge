@@ -32,7 +32,7 @@ def get_args():
     arg_group.add_argument(
         "--render",
         type=int,
-        help='Generates an HTML file with the category tree based on the supplied <cat_id>.',
+        help='Generates an HTML file with the category tree based on the supplied <cat_id>. (i. e. --render 20081)',
         metavar='<cat_id>'
     )
     return arg_parser.parse_args()
